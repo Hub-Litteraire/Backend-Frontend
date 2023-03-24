@@ -2,21 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable , HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    public function canAccessFilament(): bool
+    {
+        return $this->hasRole('Admin');
+    }
+
     protected $fillable = [
         'name',
         'email',
@@ -41,4 +50,41 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function group()
+    {
+        return $this->hasMany(Group::class);
+    }
+    public function comment()
+    {
+        return $this->hasOne(Comments::class);
+    }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class ,'members' , 'group_id' , 'user_id');
+    }
+    
+    public function likes()
+    {
+        return $this->belongsToMany(Books::class , 'likes' , 'books_id' , 'user_id');
+    }
+
+    public function dislikes()
+    {
+        return $this->belongsToMany(Books::class , 'dislikes' , 'books_id' , 'user_id');
+    }
+
+    public function favourites()
+    {
+        return $this->belongsToMany(Books::class , 'favourites' , 'user_id' , 'books_id');
+    }
+    public function ratings()
+    {
+        return $this->belongsToMany(Books::class , 'ratings' , 'books_id' , 'user_id');
+    }
+    public function rating()
+    {
+        return $this->hasOne(ratings::class);
+    }
 }
