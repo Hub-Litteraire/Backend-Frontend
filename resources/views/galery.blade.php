@@ -64,7 +64,7 @@
             @endforeach
           @if ($pass == 1)
               <div class="relative">
-                <img width="33px" src="build/assets/heart_full.png" alt="heart">
+                <img width="33px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart">
               </div>
           @else
             <form class="relative" method="post" action="{{ route('favourites.store') }}">
@@ -75,7 +75,7 @@
                         <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                 </div>
                 <button type="submit">
-                    <img width="33px" src="build/assets/heart.png" alt="heart">
+                    <img width="33px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart">
                 </button>
             </form>
           @endif
@@ -88,7 +88,7 @@
                           <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                   </div>
                   <button type="submit">
-                      <img width="33px" src="build/assets/heart.png" alt="heart">
+                      <img width="33px" src="<?=env('APP_RES')?>img/heartGris.png" alt="heart">
                   </button>
               </form>
 

@@ -43,7 +43,7 @@
                 @csrf
                 @method('delete')
                     <button type="submit">
-                        <abbr title="click to remove from favourites"><img width="33px" src="build/assets/heart_full.png" alt="heart"></abbr>
+                        <abbr title="click to remove from favourites"><img width="33px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart"></abbr>
                     </button>
                 </form>
           </div>

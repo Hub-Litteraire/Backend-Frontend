@@ -9,9 +9,6 @@
                     <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </a>
             </div>
-            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="../build/assets/books.png" alt="mockup">
-            </div>                
         </div>
     </section>
             @if ($errors->any())
@@ -28,12 +25,12 @@
               </div>
             @endif
       <div class="pt-20 pb-4">
-        
+
             <div class="flex flex-row justify-between bg-grey-100">
-            <div style="max-height: 700px" class="flex flex-col w-2/5 border-r-2 overflow-y-scroll">     
+            <div style="max-height: 700px" class="flex flex-col w-2/5 border-r-2 overflow-y-scroll">
                       <!-- drawer init and show -->
                       <div class="text-center">
-                        
+
                         <x-primary-button class="ml-4" type="button" data-drawer-target="drawer-contact" data-drawer-show="drawer-contact" aria-controls="drawer-contact">
                           {{ __('create group') }}
                         </x-primary-button>
@@ -66,7 +63,7 @@
                           <div
                               class="h-12 w-12 p-2 text-4xl bg-yellow-500 rounded-full text-white font-bold flex  items-start justify-center">
                               📖
-                          </div>  
+                          </div>
                         </div>
                         <div class="w-full">
                             <button>
@@ -95,10 +92,10 @@
                 <div class="flex justify-center items-center pt-20">
                   <h1 class="text-lg text-gray-600">You don't have any group</h1>
                 </div>
-                  
+
                 @endif
             </div>
-            
+
             <div class="w-full px-5 flex flex-col justify-between">
                     <div class="max-w-2xl w-full mx-auto px-4 pt-5">
                         <div class="flex justify-between items-center mb-6">
@@ -144,7 +141,7 @@
                       </form>
                       <div>
                     @if (isset($groups))
-                      @foreach($groups->comments as $key => $comment) 
+                      @foreach($groups->comments as $key => $comment)
                       <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
                           <footer class="flex justify-between items-center mb-2">
                               <div class="flex items-center">
@@ -177,22 +174,22 @@
                                           @method('delete')
                                           <div>
                                             @if($comment->user->name == Auth::user()->name || Auth::user()->hasRole('Admin'))
-                                              <button type="submit" class="w-full block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</button> 
+                                              <button type="submit" class="w-full block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</button>
                                             @else
-                                              <button disabled type="submit" class="w-full block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">nothing to do</button> 
+                                              <button disabled type="submit" class="w-full block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">nothing to do</button>
                                             @endif
                                           </div>
                                       </form>
-                                          
+
                                       </li>
                                   </ul>
                               </div>
                           </footer>
                           <p class="text-gray-500 dark:text-gray-400">{{ $comment->comment_content }}</p>
-                          
+
                       </article>
                       @endforeach
-                    @endif  
+                    @endif
           @if (isset($groups))
                       <div id="tooltip-bottom{{$groups->id}}" role="tooltip" style="z-index: 1000" class="absolute z-50 invisible flex flex-col px-3 py-2 text-sm font-small text-black bg-white rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                         @foreach($groups->book->likes as $key => $user) <div>{{ $user->name }}</div> @endforeach
@@ -202,7 +199,7 @@
                       @foreach($groups->book->dislikes as $key => $user) <div>{{ $user->name }}</div> @endforeach
                       <div class="tooltip-arrow" data-popper-arrow></div>
                   </div>
-          @endif        
+          @endif
                     </div>
                 </div>
             </div>
@@ -221,7 +218,7 @@
                         {{ $groups->book->book_description }}
                     </div>
                     <div class="mt-3 font-bold text-black mem">
-                      Members : 
+                      Members :
                       <span class="font-light">You</span>
                       @foreach ($groups->users as $member)
                       @if ($member->id != Auth::user()->id)
@@ -233,7 +230,7 @@
                     <div class="mt-3 flex space-x-1 items-center">
                       @if (isset($groups->book->likes[0]))
                       @foreach($groups->book->likes as $key => $user)
-                      <?php 
+                      <?php
                           if($user->id == Auth::user()->id){
                             $pass = 1;
                           }
@@ -244,7 +241,7 @@
                             @csrf
                             @method('delete')
                             <button type="submit" class="relative">
-                              <img width="30px" src="../build/assets/heart_full.png" alt="heart">
+                              <img width="30px" src="../<?=env('APP_RES')?>img/heartRed.png" alt="heart">
                             </button>
                         </form>
                       @else
@@ -256,7 +253,7 @@
                                     <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                             </div>
                             <button type="submit">
-                                <img width="30px" src="../build/assets/heart.png" alt="heart">
+                                <img width="30px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart">
                             </button>
                         </form>
                       @endif
@@ -269,17 +266,17 @@
                                       <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                               </div>
                               <button type="submit">
-                                  <img width="30px" src="../build/assets/heart.png" alt="heart">
+                                  <img width="30px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart">
                               </button>
                           </form>
-                            
+
                           @endif
                           <span class="self-center" data-tooltip-target="tooltip-bottom{{$groups->id}}" data-tooltip-placement="bottom" type="button">{{ count($groups->book->likes) }}</span>
                       </div>
                       <div class="mt-3 ml-1 flex space-x-1 items-center">
                         @if (isset($groups->book->dislikes[0]))
                         @foreach($groups->book->dislikes as $key => $user)
-                        <?php 
+                        <?php
                             if($user->id == Auth::user()->id){
                               $pass = 1;
                             }
@@ -293,7 +290,7 @@
                                 <img width="33px" src="../build/assets/broken-heart-full.png" alt="heart">
                               </button>
                           </form>
-                            
+
                         @else
                           <form class="relative" method="post" action="{{ route('dislikes.store') }}">
                             @csrf
@@ -303,7 +300,7 @@
                                       <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                               </div>
                               <button type="submit">
-                                  <img width="33px" src="../build/assets/broken-heart.png" alt="broken-heart">
+                                  <img width="33px" src="<?=env('APP_RES')?>img/heartGris.png" alt="broken-heart">
                               </button>
                           </form>
                         @endif
@@ -316,10 +313,10 @@
                                         <input class="hidden" type="text" name="pg" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
                                 </div>
                                 <button type="submit">
-                                    <img width="33px" src="../build/assets/broken-heart.png" alt="broken-heart">
+                                    <img width="33px" src="<?=env('APP_RES')?>img/heartGris.png" alt="broken-heart">
                                 </button>
                             </form>
-                              
+
                             @endif
                             <span class="self-center" data-tooltip-target="dtooltip-bottom{{$groups->id}}" data-tooltip-placement="bottom" type="button">{{ count($groups->book->dislikes) }}</span>
                         </div>
@@ -329,7 +326,7 @@
                         @method('delete')
                         <div class="flex justify-center">
                           @if($groups->user->name == Auth::user()->name)
-                            <x-primary-button type="submit" >Delete this group</x-primary-button> 
+                            <x-primary-button type="submit" >Delete this group</x-primary-button>
                           @endif
                         </div>
                     </form>
