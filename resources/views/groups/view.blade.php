@@ -230,7 +230,7 @@
                             @csrf
                             @method('delete')
                             <button type="submit" class="relative">
-                              <img width="30px" src="../<?=env('APP_RES')?>img/heartRed.png" alt="heart">
+                              <img width="30px" src="<?=env('APP_RES')?>img/heartRed.png" alt="heart">
                             </button>
                         </form>
                       @else
@@ -276,7 +276,7 @@
                               @csrf
                               @method('delete')
                               <button type="submit" class="relative">
-                                <img width="33px" src="../build/assets/broken-heart-full.png" alt="heart">
+                                <img width="33px" src="<?=env('APP_RES')?>img/heartGris.png" alt="heart">
                               </button>
                           </form>
 
