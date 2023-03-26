@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 24 mars 2023 à 18:20
+-- Généré le : dim. 26 mars 2023 à 19:18
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -45,8 +45,9 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `book_title`, `book_description`, `book_author`, `book_cover`, `book_pdf`, `category_id`, `archived`, `created_at`, `updated_at`) VALUES
-(2, 'To Kill a Mockingbird', 'To Kill a Mockingbird, Novel by Harper Lee, published in 1960. It is set in the fictional town of Maycomb, Ala., during the Great Depression', 'Harper Lee', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042758/books/e8h5szw9iw7w283oqxff.jpg', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042760/books/amzf8vz2v64sqysgcjvb.pdf', 1, 0, '2023-03-17 07:46:01', '2023-03-17 07:46:01'),
-(3, 'Harry Potter and the Philosopher\'s Stone', 'The first novel in the Harry Potter series and Rowling\'s debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.', 'J. K. Rowling', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042831/books/ry9ll6un5o39wb8zn14x.jpg', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042834/books/a1541oczqj6u0r96zwsr.pdf', 2, 0, '2023-03-17 07:47:15', '2023-03-17 07:47:15');
+(2, 'nobody knows but you', 'A Sydney Taylor Award Honor BookSydney Taylor Honor winner and National Jewish Book Award finalist Anya and the Nightingale is the magical conclusion to the Anya and the Dragon duology for middle grade readers—now in paperback!It’s been a year since a violent Viking terrorized the small village of Zmeyreka and Anya and her foolish friend Ivan saved a friendly dragon from being sacrificed for his magic.But things still aren’t safe in the kingdom of Kievan Rus’. After embarking on a journey to bring her papa home from war, Anya discovers a powerful forest creature terrorizing travelers. But she soon learns that he’s not the monster the kingdom should fear. There’s an even greater evil that lurks under the city. Can Anya stop the monster, save her papa, and find her way home? Or will the secrets of Kiev leave Anya and her friends trapped beneath the city forever?', 'ANICA MROSE RISSI', 'https://i.pinimg.com/564x/8b/ae/1a/8bae1a37c088f06ce19b89f10a5b0707.jpg', 'http://localhost/backend-frontend/resources/pdf/Nobody_Knows_but_You_by_Anica_Mrose_Rissi.epub', 1, 0, '2023-03-17 07:46:01', '2023-03-17 07:46:01'),
+(3, 'ANYA AND THE NIGHTINGALE', 'A Sydney Taylor Award Honor BookSydney Taylor Honor winner and National Jewish Book Award finalist Anya and the Nightingale is the magical conclusion to the Anya and the Dragon duology for middle grade readers—now in paperback!It’s been a year since a violent Viking terrorized the small village of Zmeyreka and Anya and her foolish friend Ivan saved a friendly dragon from being sacrificed for his magic.But things still aren’t safe in the kingdom of Kievan Rus’. After embarking on a journey to bring her papa home from war, Anya discovers a powerful forest creature terrorizing travelers. But she soon learns that he’s not the monster the kingdom should fear. There’s an even greater evil that lurks under the city. Can Anya stop the monster, save her papa, and find her way home? Or will the secrets of Kiev leave Anya and her friends trapped beneath the city forever?', 'SOFIYA PASTERNACK\n', 'https://i.pinimg.com/564x/3f/56/fd/3f56fdacff697f8b003b7882aae2f179.jpg', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042834/books/a1541oczqj6u0r96zwsr.pdf', 2, 0, '2023-03-17 07:47:15', '2023-03-17 07:47:15'),
+(4, 'when you ask me where i\'m going', 'A Sydney Taylor Award Honor BookSydney Taylor Honor winner and National Jewish Book Award finalist Anya and the Nightingale is the magical conclusion to the Anya and the Dragon duology for middle grade readers—now in paperback!It’s been a year since a violent Viking terrorized the small village of Zmeyreka and Anya and her foolish friend Ivan saved a friendly dragon from being sacrificed for his magic.But things still aren’t safe in the kingdom of Kievan Rus’. After embarking on a journey to bring her papa home from war, Anya discovers a powerful forest creature terrorizing travelers. But she soon learns that he’s not the monster the kingdom should fear. There’s an even greater evil that lurks under the city. Can Anya stop the monster, save her papa, and find her way home? Or will the secrets of Kiev leave Anya and her friends trapped beneath the city forever?', 'Jasmin Kaur', 'https://i.pinimg.com/564x/41/81/e9/4181e9924b88cbd2c7dae83222baaaf4.jpg', 'http://res.cloudinary.com/dhti1bezp/image/upload/v1679042834/books/a1541oczqj6u0r96zwsr.pdf', 2, 0, '2023-03-17 07:47:15', '2023-03-17 07:47:15');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ CREATE TABLE `books_ratings` (
 --
 
 INSERT INTO `books_ratings` (`books_id`, `ratings_id`, `created_at`, `updated_at`) VALUES
-(2, 1, '2023-03-24 16:51:17', '2023-03-24 16:51:17');
+(2, 1, '2023-03-26 15:38:14', '2023-03-26 15:38:14');
 
 -- --------------------------------------------------------
 
@@ -145,6 +146,14 @@ CREATE TABLE `favourites` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Déchargement des données de la table `favourites`
+--
+
+INSERT INTO `favourites` (`user_id`, `books_id`, `created_at`, `updated_at`) VALUES
+(1, 2, '2023-03-26 15:37:03', '2023-03-26 15:37:03'),
+(1, 3, '2023-03-26 17:07:57', '2023-03-26 17:07:57');
+
 -- --------------------------------------------------------
 
 --
@@ -159,14 +168,6 @@ CREATE TABLE `groups` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `groups`
---
-
-INSERT INTO `groups` (`id`, `group_name`, `user_id`, `book_id`, `created_at`, `updated_at`) VALUES
-(2, 'group 1337', 1, 2, '2023-03-17 08:01:44', '2023-03-17 08:01:44'),
-(3, 'mygroup', 2, 3, '2023-03-17 08:03:30', '2023-03-17 08:03:30');
 
 -- --------------------------------------------------------
 
@@ -206,14 +207,6 @@ CREATE TABLE `members` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `members`
---
-
-INSERT INTO `members` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(2, 1, '2023-03-17 08:01:44', '2023-03-17 08:01:44'),
-(3, 2, '2023-03-17 08:03:30', '2023-03-17 08:03:30');
 
 -- --------------------------------------------------------
 
@@ -346,7 +339,7 @@ CREATE TABLE `ratings` (
 --
 
 INSERT INTO `ratings` (`id`, `star_rating`, `user_id`, `books_id`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 2, '2023-03-24 16:51:17', '2023-03-24 16:51:17');
+(1, 5, 1, 2, '2023-03-26 15:38:14', '2023-03-26 15:38:14');
 
 -- --------------------------------------------------------
 
@@ -367,7 +360,7 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'web', '2023-03-17 07:45:14', '2023-03-17 07:45:14');
+(1, 'Admin', 'web', '2023-03-17 07:45:14', '2023-03-17 07:45:14');
 
 -- --------------------------------------------------------
 
@@ -402,8 +395,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '2023-03-17 07:45:14', '$2y$10$n4P.yn4TdCEx12pZQeNxQ..oaRDIeB932NSTTgCzckJdmmui6VcHm', 'coaaHp9KCsewuHVRFKUrZketq95xyzZB2oeaW0DwJ0iJU9gV7OOeiUq2OBFb', '2023-03-17 07:45:14', '2023-03-17 07:45:14'),
-(2, 'marouane user', 'user@gmail.com', NULL, '$2y$10$n4P.yn4TdCEx12pZQeNxQ..oaRDIeB932NSTTgCzckJdmmui6VcHm', NULL, '2023-03-17 08:03:08', '2023-03-17 08:03:08');
+(1, 'admin', 'admin@gmail.com', '2023-03-17 07:45:14', '$2y$10$n4P.yn4TdCEx12pZQeNxQ..oaRDIeB932NSTTgCzckJdmmui6VcHm', 'MfDMyvGWGHCrDNGxNEmMTfj23nnssxokTL5Pb7sX6N96MGwQxvXd9AeXKGzs', '2023-03-17 07:45:14', '2023-03-17 07:45:14');
 
 -- --------------------------------------------------------
 
@@ -584,7 +576,7 @@ ALTER TABLE `user_books`
 -- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
