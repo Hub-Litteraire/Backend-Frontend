@@ -18,7 +18,7 @@
             src="{{ $book->book_cover }}"
             alt="" />
           <div class="flex flex-col justify-start p-6 overflow-y-auto">
-            <div class="w-20 flex flex-col items-baseline">
+            <div class="w-auto flex flex-col items-baseline">
             <h5
               class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
               {{ $book->book_title }}
